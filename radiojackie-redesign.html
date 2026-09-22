@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radio Jackie — The Sound of South West London</title>
+<meta name="description" content="Radio Jackie — London's oldest independent radio station, serving South West London.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf5ee; --ink:#19130e; --muted:#6b6155; --accent:#e4572e;
+    --accent2:#1e7e9c; --line:#e4dccb; --card:#fffdf8;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',system-ui,sans-serif; color:var(--ink); background:var(--bg); line-height:1.5;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 22px;}
+
+  /* ---------- Equalizer animation ---------- */
+  @keyframes eq{0%,100%{height:6px}20%{height:26px}40%{height:14px}60%{height:32px}80%{height:10px}}
+  .eq{display:flex; gap:4px; align-items:flex-end;}
+  .eq i{width:5px; background:var(--accent); animation:eq .9s infinite; border-radius:1px;}
+
+  /* ---------- Header ---------- */
+  header{position:sticky; top:0; z-index:50; background:rgba(250,245,238,.94); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 22px; max-width:1120px; margin:0 auto;}
+  .nav .brand{font-family:'Fraunces',serif; font-size:1.4rem; font-weight:600; color:var(--ink); text-decoration:none; letter-spacing:-.01em;}
+  .nav nav{display:flex; gap:26px;}
+  .nav nav a{color:var(--ink); text-decoration:none; font-size:.95rem; font-weight:500;}
+  .nav nav a:hover{color:var(--accent);}
+  .listen{background:var(--ink); color:#fff; border:none; padding:10px 20px; border-radius:999px; font-weight:600; font-size:.9rem; cursor:pointer;}
+  .listen .dot{display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--accent); margin-right:8px; animation:pulse 1.2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:96px 0 64px; position:relative; text-align:center;}
+  .hero::after{content:''; position:absolute; right:0; top:0; width:340px; height:340px; border-radius:50%; background:radial-gradient(circle, rgba(228,87,46,.10), transparent 70%);}
+  .hero .kicker{display:inline-flex; align-items:center; gap:10px; font-size:.9rem; font-weight:600; color:var(--accent);}
+  .hero .kicker .live{background:var(--accent); color:#fff; font-size:.72rem; padding:3px 10px; border-radius:999px; letter-spacing:.06em; text-transform:uppercase;}
+  .hero h1{font-family:'Fraunces',serif; font-size:3.6rem; font-weight:500; line-height:1.04; letter-spacing:-.02em; color:var(--ink); margin-top:18px;}
+  .hero h1 em{font-style:italic; color:var(--accent);}
+  .hero .sub{font-size:1.2rem; font-weight:400; color:var(--muted); max-width:620px; margin:20px auto 0;}
+  .hero .now{display:inline-flex; align-items:center; gap:12px; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px 22px; margin-top:30px; box-shadow:0 10px 20px rgba(25,19,14,.08);}
+  .hero .now .eq i{background:var(--accent);}
+  .hero .now .lbl{font-size:.85rem; color:var(--muted);}
+  .hero .now .track{font-family:'Fraunces',serif; font-size:1.15rem; font-weight:500;}
+
+  /* ---------- Shows strip ---------- */
+  .nownext{display:grid; grid-template-columns:1fr 1fr; gap:34px; margin:44px 0;}
+  .nn-card{background:var(--card); border:1px solid var(--line); border-radius:18px; padding:26px;}
+  .nn-card .when{font-size:.78rem; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.05em;}
+  .nn-card h3{font-family:'Fraunces',serif; font-size:1.4rem; margin-top:6px;}
+  .nn-card .hosts{color:var(--muted); font-size:.98rem;}
+  .nn-card .badge{float:right; background:var(--accent); color:#fff; font-size:.7rem; padding:3px 10px; border-radius:999px; text-transform:uppercase; letter-spacing:.05em;}
+  .nn-card .arr{color:var(--accent); font-size:1rem;}
+
+  /* ---------- Section headings ---------- */
+  section{padding:76px 0;}
+  .sec-kicker{display:inline-block; font-size:.85rem; font-weight:600; color:var(--muted); letter-spacing:.08em; text-transform:uppercase;}
+  #presenters .wrap, #listen .wrap{text-align:center;}
+  #presenters .presenter-grid,#listen .cta-row{ text-align:left;}
+  h2{font-family:'Fraunces',serif; font-size:2.5rem; font-weight:500; margin-top:10px; letter-spacing:-.01em;}
+  #presenters .sec-sub{color:var(--muted); max-width:560px; margin:0 auto 0;}
+
+  /* ---------- Presenters ---------- */
+  .presenter-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:40px;}
+  .p-card{background:var(--card); border:1px solid var(--line); border-radius:20px; overflow:hidden; box-shadow:0 12px 24px rgba(25,19,14,.08);}
+  .p-card img{width:100%; aspect-ratio:1/1; object-fit:cover; display:block; border-bottom:3px solid var(--accent);}
+  .p-card .meta{padding:18px 22px;}
+  .p-card h3{font-family:'Fraunces',serif; font-size:1.3rem;}
+  .p-card .role{color:var(--muted); font-size:.92rem; margin-top:4px;}
+  .p-card .watch{display:inline-block; color:var(--accent); font-size:.92rem; margin-top:10px; text-decoration:none; font-weight:600;}
+  .view-all{display:inline-block; margin-top:28px; color:var(--ink); font-weight:600; text-decoration:none; border-bottom:2px solid var(--accent);}
+
+  /* ---------- Big quote band ---------- */
+  .band{background:var(--ink); color:#fff; text-align:center; padding:84px 0;}
+  .band .big{font-family:'Fraunces',serif; font-size:2.6rem; font-style:italic; font-weight:400; max-width:800px;}
+  .band .by{color:#e8e2d6; margin-top:14px;}
+
+  /* ---------- Listen/Contact ---------- */
+  .listen-box{background:var(--card); border:1px solid var(--line); border-radius:24px; padding:48px; text-align:center; box-shadow:0 14px 30px rgba(25,19,14,.08);}
+  .listen-box h2{color:var(--ink);}
+  .listen-box p{color:var(--muted); font-size:1.05rem; max-width:560px; margin:16px auto 0;}
+  .cta-row{display:flex; gap:14px; justify-content:center; margin-top:28px; flex-wrap:wrap;}
+  .btn{background:var(--accent); color:#fff; border:none; padding:14px 26px; border-radius:12px; font-weight:600; font-size:1rem; cursor:pointer; text-decoration:none;}
+  .btn-dark{background:var(--ink); color:#fff;}
+  .contact-detail{color:var(--muted); margin-top:26px; text-align:center; font-size:.98rem;}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--bg); border-top:1px solid var(--line); padding:48px 0 26px;}
+  footer .wrap{display:grid; grid-template-columns:repeat(3,1fr); gap:36px;}
+  footer h4{font-size:.85rem; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); margin-bottom:12px;}
+  footer a,footer p{color:var(--muted); font-size:.95rem; text-decoration:none;}
+  .footline{text-align:center; color:var(--muted); font-size:.85rem; margin-top:24px;}
+
+  @media(max-width:880px){
+    .nav nav{display:none;}
+    .nownext{grid-template-columns:1fr;}
+    .presenter-grid{grid-template-columns:repeat(2,1fr);}
+    .hero h1{font-size:2.5rem;}
+    section{padding:56px 0;}
+  }
+  @media(max-width:600px){.presenter-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="brand" href="#top">Radio&nbsp;Jackie</a>
+    <nav>
+      <a href="#onair">On Air</a>
+      <a href="radiojackie-presenters.html">Presenters</a>
+      <a href="radiojackie-schedule.html">Schedule</a>
+      <a href="#listen">Listen</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="listen"><span class="dot"></span>Listen Live</button>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <span class="kicker"><span class="live">● Live now</span> London&rsquo;s oldest independent radio station</span>
+    <h1>The <em>sound</em> of South West London.</h1>
+    <p class="sub">Local and proud of it. Music, news, travel and the voices of the people who live here &mdash; broadcasting to you every day.</p>
+    <div class="now">
+      <span class="eq"><i></i><i></i><i></i><i></i><i></i></span>
+      <span>
+        <span class="lbl">Now Playing</span>
+        <span class="track" style="display:block; margin-top:2px;">Memories &mdash; Maroon 5</span>
+      </span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap nownext">
+  <div class="nn-card">
+    <span class="badge">Now</span>
+    <div class="when">Current Show</div>
+    <h3>Jackie Drive</h3>
+    <p class="hosts">with Mick Brown</p>
+  </div>
+  <div class="nn-card">
+    <span class="arr">&rarr;</span>
+    <div class="when">Next Up</div>
+    <h3>Robert Hughes</h3>
+    <p class="hosts">joining you after Jackie Drive</p>
+  </div>
+</div>
+
+<section id="presenters">
+  <div class="wrap">
+    <span class="sec-kicker">Meet the voices</span>
+    <h2>On Air Team</h2>
+    <div class="presenter-grid">
+      <div class="p-card"><img src="https://radiojackie.com/wp-content/uploads/2022/07/Neil-LONG.jpg" alt="Neil Long"><div class="meta"><h3>Neil Long</h3><p class="role">Presenter</p><a class="watch" href="#">Read more &rarr;</a></div></div>
+      <div class="p-card"><img src="https://radiojackie.com/wp-content/uploads/2022/07/Mick-B.jpg" alt="Mick Brown"><div class="meta"><h3>Mick Brown</h3><p class="role">Jackie Drive</p><a class="watch" href="#">Read more &rarr;</a></div></div>
+      <div class="p-card"><img src="https://radiojackie.com/wp-content/uploads/2022/09/nickypatrick.jpg" alt="Nicky Patrick"><div class="meta"><h3>Nicky Patrick</h3><p class="role">Presenter</p><a class="watch" href="#">Read more &rarr;</a></div></div>
+    </div>
+    <a class="view-all" href="#">View all presenters &rarr;</a>
+  </div>
+</section>
+
+<div class="band">
+  <div class="wrap">
+    <p class="big">&ldquo;A part of local history &mdash; and still the heart of the community.&rdquo;</p>
+    <p class="by">Radio Jackie &mdash; The Sound of South West London</p>
+  </div>
+</div>
+
+<section id="listen">
+  <div class="wrap">
+    <div class="listen-box">
+      <h2>Tune in. Right now.</h2>
+      <p>Wherever you are in South West London, Radio Jackie is with you &mdash; on the radio, on the app, or online.</p>
+      <div class="cta-row">
+        <a class="btn" href="#">Listen Live</a>
+        <a class="btn btn-dark" href="#">Download the App</a>
+      </div>
+      <p class="contact-detail">Studio: 020 8288 1078 &nbsp;&middot;&nbsp; Text / WhatsApp: 07906 622 061</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div style="font-family:'Fraunces',serif; font-size:1.3rem; font-weight:600; color:var(--ink);">Radio Jackie</div>
+      <p style="margin-top:10px;">The Sound of South West London. Local news, travel and music every single day.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <p><a href="#onair">On Air</a></p>
+      <p><a href="#presenters">Presenters</a></p>
+      <p><a href="#listen">Listen</a></p>
+      <p><a href="#">Advertisers</a></p>
+    </div>
+    <div>
+      <h4>Get in touch</h4>
+      <p>Studio: <a href="tel:02082881078">020 8288 1078</a></p>
+      <p>Text / WhatsApp: <a href="tel:07906622061">07906 622 061</a></p>
+      <p><a href="mailto:news@radiojackie.com">news@radiojackie.com</a></p>
+    </div>
+  </div>
+  <p class="footline">&copy; <span id="yr"></span> Radio Jackie. Concept redesign (not live).</p>
+</footer>
+
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>
