@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schedule — Radio Jackie</title>
+<meta name="description" content="Radio Jackie — this week's schedule on The Sound of South West London.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#faf5ee; --ink:#19130e; --muted:#6b6155; --accent:#e4572e; --line:#e4dccb; --card:#fffdf8;}
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Inter',system-ui,sans-serif; color:var(--ink); background:var(--bg); line-height:1.5;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 22px;}
+
+  header{position:sticky; top:0; z-index:50; background:rgba(250,245,237,.94); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 22px; max-width:1120px; margin:0 auto;}
+  .nav .brand{font-family:'Fraunces',serif; font-size:1.4rem; font-weight:600; color:var(--ink); text-decoration:none;}
+  .nav nav{display:flex; gap:26px;}
+  .nav nav a{color:var(--ink); text-decoration:none; font-size:.95rem; font-weight:500;}
+  .nav nav a:hover{color:var(--accent);}
+  .nav nav a.active{color:var(--accent); font-weight:700; border-bottom:2px solid var(--accent);}
+  .listen{background:var(--ink); color:#fff; border:none; padding:10px 20px; border-radius:999px; font-weight:600; font-size:.9rem; cursor:pointer;}
+  .listen .dot{display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--accent); margin-right:8px; animation:pulse 1.2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+
+  .pagehead{padding:64px 0 26px; text-align:center;}
+  .sec-kicker{display:inline-block; font-size:.85rem; font-weight:600; color:var(--muted); letter-spacing:.08em; text-transform:uppercase;}
+  h1{font-family:'Fraunces',serif; font-size:3rem; font-weight:500; margin-top:10px;}
+  .pagehead p{color:var(--muted); font-size:1.05rem; max-width:620px; margin:14px auto 0;}
+
+  .sched{display:grid; grid-template-columns:repeat(7,1fr); gap:14px; margin:26px 0;}
+  .day{background:var(--card); border:2px solid var(--line); border-radius:16px; padding:16px; display:flex; flex-direction:column; gap:10px;}
+  .day h3{font-family:'Fraunces',serif; font-size:1.05rem; padding-bottom:10px; border-bottom:2px solid var(--accent);}
+  .slot{font-size:.9rem;}
+  .slot .time{color:var(--muted); font-weight:600; font-size:.8rem; display:block;}
+  .slot .who{color:var(--ink); font-weight:500; line-height:1.25; display:block; margin-top:2px;}
+
+  .note{font-size:.9rem; color:var(--muted); margin-bottom:40px;}
+
+  footer{border-top:1px solid var(--line); padding:40px 0 24px;}
+  footer .wrap{display:flex; flex-wrap:wrap; gap:30px; justify-content:space-between; align-items:center;}
+  footer p,footer a{color:var(--muted); font-size:.9rem; text-decoration:none;}
+  .footline{text-align:center; color:var(--muted); font-size:.85rem; padding-top:16px;}
+
+  @media(max-width:1000px){.sched{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:640px){.sched{grid-template-columns:1fr;} .pagehead h1{font-size:2.2rem;} .nav nav{display:none;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="brand" href="radiojackie-redesign.html">Radio&nbsp;Jackie</a>
+    <nav>
+      <a href="radiojackie-redesign.html#onair">On Air</a>
+      <a href="radiojackie-redesign.html#presenters">Presenters</a>
+      <a href="radiojackie-schedule.html" class="active">Schedule</a>
+      <a href="radiojackie-redesign.html#listen">Listen</a>
+      <a href="radiojackie-redesign.html#contact">Contact</a>
+    </nav>
+    <button class="listen"><span class="dot"></span>Listen Live</button>
+  </div>
+</header>
+
+<section class="pagehead">
+  <div class="wrap">
+    <span class="sec-kicker">This Week</span>
+    <h1>Who's on, and when.</h1>
+    <p>The full Radio Jackie week &mdash; every presenter and every show, day by day.</p>
+  </div>
+</section>
+
+<section class="sched wrap">
+  <div class="day">
+    <h3>Monday</h3>
+    <div class="slot"><span class="time">00:00 &ndash; 07:00</span><span class="who">More Music Jackie</span></div>
+    <div class="slot"><span class="time">07:00 &ndash; 10:00</span><span class="who">Neil &amp; Nicky Jackie Breakfast</span></div>
+    <div class="slot"><span class="time">10:00 &ndash; 13:00</span><span class="who">Clive West</span></div>
+    <div class="slot"><span class="time">13:00 &ndash; 16:00</span><span class="who">Eddie Castle</span></div>
+    <div class="slot"><span class="time">16:00 &ndash; 19:00</span><span class="who">Mick Brown Jackie Drive</span></div>
+    <div class="slot"><span class="time">19:00 &ndash; 22:00</span><span class="who">Ellie Redshaw</span></div>
+    <div class="slot"><span class="time">22:00 &ndash; 00:00</span><span class="who">David Griffiths</span></div>
+  </div>
+  <div class="day">
+    <h3>Tuesday</h3>
+    <div class="slot"><span class="time">00:00 &ndash; 07:00</span><span class="who">More Music Jackie</span></div>
+    <div class="slot"><span class="time">07:00 &ndash; 10:00</span><span class="who">Neil &amp; Nicky Jackie Breakfast</span></div>
+    <div class="slot"><span class="time">10:00 &ndash; 13:00</span><span class="who">Alistair Wright</span></div>
+    <div class="slot"><span class="time">13:00 &ndash; 16:00</span><span class="who">Eddie Castle</span></div>
+    <div class="slot"><span class="time">16:00 &ndash; 19:00</span><span class="who">Mick Brown Jackie Drive</span></div>
+    <div class="slot"><span class="time">19:00 &ndash; 22:00</span><span class="who">Robert Hughes</span></div>
+    <div class="slot"><span class="time">22:00 &ndash; 00:00</span><span class="who">Steve Lee</span></div>
+  </div>
+  <div class="day">
+    <h3>Wednesday</h3>
+    <div class="slot"><span class="time">00:00 &ndash; 07:00</span><span class="who">More Music Jackie</span></div>
+    <div class="slot"><span class="time">07:00 &ndash; 10:00</span><span class="who">Neil &amp; Dani Jackie Breakfast</span></div>
+    <div class="slot"><span class="time">10:00 &ndash; 13:00</span><span class="who">Alistair Wright</span></div>
+    <div class="slot"><span class="time">13:00 &ndash; 16:00</span><span class="who">Eddie Castle</span></div>
+    <div class="slot"><span class="time">16:00 &ndash; 19:00</span><span class="who">Mick Brown Jackie Drive</span></div>
+    <div class="slot"><span class="time">19:00 &ndash; 22:00</span><span class="who">Geoff Rogers</span></div>
+    <div class="slot"><span class="time">22:00 &ndash; 00:00</span><span class="who">Ella Williamson</span></div>
+  </div>
+  <div class="day">
+    <h3>Thursday</h3>
+    <div class="slot"><span class="time">00:00 &ndash; 07:00</span><span class="who">More Music Jackie</span></div>
+    <div class="slot"><span class="time">07:00 &ndash; 10:00</span><span class="who">Neil &amp; Nicky Jackie Breakfast</span></div>
+    <div class="slot"><span class="time">10:00 &ndash; 13:00</span><span class="who">Alistair Wright</span></div>
+    <div class="slot"><span class="time">13:00 &ndash; 16:00</span><span class="who">Eddie Castle</span></div>
+    <div class="slot"><span class="time">16:00 &ndash; 19:00</span><span class="who">Mick Brown Jackie Drive</span></div>
+    <div class="slot"><span class="time">19:00 &ndash; 21:00</span><span class="who">Kelvin Michaels</span></div>
+    <div class="slot"><span class="time">21:00 &ndash; 00:00</span><span class="who">Natalie Osborne</span></div>
+  </div>
+  <div class="day">
+    <h3>Friday</h3>
+    <div class="slot"><span class="time">00:00 &ndash; 07:00</span><span class="who">More Music Jackie</span></div>
+    <div class="slot"><span class="time">07:00 &ndash; 10:00</span><span class="who">Neil &amp; Nicky Jackie Breakfast</span></div>
+    <div class="slot"><span class="time">10:00 &ndash; 13:00</span><span class="who">Alistair Wright</span></div>
+    <div class="slot"><span class="time">13:00 &ndash; 16:00</span><span class="who">Eddie Castle</span></div>
+    <div class="slot"><span class="time">16:00 &ndash; 19:00</span><span class="who">Mick Brown Jackie Drive</span></div>
+    <div class="slot"><span class="time">19:00 &ndash; 22:00</span><span class="who">Ellie Redshaw</span></div>
+    <div class="slot"><span class="time">22:00 &ndash; 00:00</span><span class="who">David Griffiths</span></div>
+  </div>
+  <div class="day">
+    <h3>Saturday</h3>
+    <div class="slot"><span class="time">00:00 &ndash; 07:00</span><span class="who">More Music Jackie</span></div>
+    <div class="slot"><span class="time">07:00 &ndash; 09:00</span><span class="who">Mick Brown Saturday Breakfast</span></div>
+    <div class="slot"><span class="time">09:00 &ndash; 12:00</span><span class="who">Chris Farrell</span></div>
+    <div class="slot"><span class="time">12:00 &ndash; 15:00</span><span class="who">Dani Davies</span></div>
+    <div class="slot"><span class="time">15:00 &ndash; 18:00</span><span class="who">Darren Altman</span></div>
+    <div class="slot"><span class="time">18:00 &ndash; 21:00</span><span class="who">Matthew Down</span></div>
+    <div class="slot"><span class="time">21:00 &ndash; 00:00</span><span class="who">Lin Summers</span></div>
+  </div>
+  <div class="day">
+    <h3>Sunday</h3>
+    <div class="slot"><span class="time">00:00 &ndash; 07:00</span><span class="who">More Music Jackie</span></div>
+    <div class="slot"><span class="time">07:00 &ndash; 09:00</span><span class="who">Clive West Sunday Breakfast</span></div>
+    <div class="slot"><span class="time">09:00 &ndash; 12:00</span><span class="who">Chris Farrell</span></div>
+    <div class="slot"><span class="time">12:00 &ndash; 15:00</span><span class="who">Paul Anthony</span></div>
+    <div class="slot"><span class="time">15:00 &ndash; 18:00</span><span class="who">Darren Altman</span></div>
+    <div class="slot"><span class="time">18:00 &ndash; 21:00</span><span class="who">Charlie King</span></div>
+    <div class="slot"><span class="time">21:00 &ndash; 23:00</span><span class="who">More Music Jackie</span></div>
+  </div>
+</section>
+
+<p class="note wrap">Regular weekday schedule shown. On Bank Holidays and at special times of year the schedule can vary.</p>
+
+<footer>
+  <div class="wrap">
+    <span>Radio Jackie &mdash; The Sound of South West London</span>
+    <span>Studio: <a href="tel:02082881078">020 8288 1078</a> &nbsp;&middot;&nbsp; Text: <a href="tel:07906622061">07906 622 061</a></span>
+  </div>
+  <p class="footline">&copy; <span id="yr"></span> Radio Jackie. Concept redesign (not live).</p>
+</footer>
+
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>
