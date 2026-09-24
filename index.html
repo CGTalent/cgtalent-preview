@@ -295,10 +295,11 @@
         <span class="label" style="opacity:.75;">UK &middot; Call / Text / WhatsApp</span>
         <a href="tel:+447861362636" style="display:block;margin-top:12px;font-family:var(--display);font-size:1.75rem;color:#fff;text-decoration:none;">07861 36 26 36</a>
       </div>
-      <form id="cform" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="contact">
-        <input type="hidden" name="subject" data-remove-prefix value="New enquiry from the CGTalent website">
-        <p style="display:none;"><label>Do not fill this in: <input name="bot-field"></label></p>
+      <form id="cform" name="contact" method="POST" action="https://api.web3forms.com/submit">
+        <input type="hidden" name="access_key" value="d6c9c70c-4508-4a5f-a254-8b35ee40bdb6">
+        <input type="hidden" name="subject" value="New enquiry from the CGTalent website">
+        <input type="hidden" name="from_name" value="CGTalent website">
+        <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
         <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" required placeholder="Your name"></div>
         <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required placeholder="you@example.com"></div>
         <div class="field"><label for="phone">Phone Number</label><input id="phone" name="phone" type="tel" placeholder="So we can call you back"></div>
@@ -345,10 +346,13 @@ document.getElementById('yr').textContent=new Date().getFullYear();
 const form=document.getElementById('cform');
 if(form){form.addEventListener('submit',async function(ev){
   const s=document.getElementById('status');ev.preventDefault();s.textContent='Sending...';
-  const fd=new FormData(form);fd.set('form-name','contact');
+  const fd=new FormData(form);const payload={};
+  fd.forEach((v,k)=>{payload[k]=v;});
+  payload.access_key='d6c9c70c-4508-4a5f-a254-8b35ee40bdb6';
   try{
-    const r=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(fd).toString()});
-    if(r.ok){form.reset();s.textContent='Thanks - your message is on its way.';}
+    const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)});
+    const j=await r.json().catch(function(){return {};});
+    if(r.ok&&j.success){form.reset();s.textContent='Thanks - your message is on its way.';}
     else{s.textContent='Sorry, something went wrong. Please email contact@cgtalent.uk.';}
   }catch(e){s.textContent='Sorry, something went wrong. Please email contact@cgtalent.uk.';}
 });}
