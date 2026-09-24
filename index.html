@@ -295,7 +295,10 @@
         <span class="label" style="opacity:.75;">UK &middot; Call / Text / WhatsApp</span>
         <a href="tel:+447861362636" style="display:block;margin-top:12px;font-family:var(--display);font-size:1.75rem;color:#fff;text-decoration:none;">07861 36 26 36</a>
       </div>
-      <form id="cform" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <form id="cform" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <input type="hidden" name="subject" data-remove-prefix value="New enquiry from the CGTalent website">
+        <p style="display:none;"><label>Do not fill this in: <input name="bot-field"></label></p>
         <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" required placeholder="Your name"></div>
         <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required placeholder="you@example.com"></div>
         <div class="field"><label for="phone">Phone Number</label><input id="phone" name="phone" type="tel" placeholder="So we can call you back"></div>
@@ -340,7 +343,15 @@
 <script>
 document.getElementById('yr').textContent=new Date().getFullYear();
 const form=document.getElementById('cform');
-if(form){form.addEventListener('submit',async function(ev){const s=document.getElementById('status');const a=form.action;ev.preventDefault();if(a.includes('YOUR_FORM_ID')){s.textContent='Form not yet connected - please email contact@cgtalent.uk. Thank you!';return;}s.textContent='Sending...';try{const r=await fetch(a,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});if(r.ok){form.reset();s.textContent="Thanks - your message is on its way.";}else{s.textContent='Please email us at contact@cgtalent.uk.';}}catch(e){s.textContent='Please email us at contact@cgtalent.uk.';}});}
+if(form){form.addEventListener('submit',async function(ev){
+  const s=document.getElementById('status');ev.preventDefault();s.textContent='Sending...';
+  const fd=new FormData(form);fd.set('form-name','contact');
+  try{
+    const r=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(fd).toString()});
+    if(r.ok){form.reset();s.textContent='Thanks - your message is on its way.';}
+    else{s.textContent='Sorry, something went wrong. Please email contact@cgtalent.uk.';}
+  }catch(e){s.textContent='Sorry, something went wrong. Please email contact@cgtalent.uk.';}
+});}
 </script>
 </body>
 </html>
