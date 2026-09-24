@@ -276,7 +276,7 @@
     <h2>On air. On stage. In the room.</h2>
     <p style="margin-top:18px;max-width:660px;line-height:1.9;">From studios and stages to awards nights, conferences and major live events - this is where our talent comes alive.</p>
     <div class="gallery-grid">
-      <div class="g red"><img src="images/LIVE.jpg" alt="Brit Fest 2026"><span class="cap">Brit Fest 2026</span></div>
+      <div class="g red"><img src="images/brit-fest-2026.jpg" alt="Brit Fest 2026"><span class="cap">Brit Fest 2026</span></div>
       <div class="g red"><img src="images/toolan_1.jpg" alt="Hosting on stage"><span class="cap">Hosting on stage</span></div>
       <div class="g red"><img src="images/toolan_2.jpg" alt="Festivals"><span class="cap">Festivals</span></div>
       <div class="g red"><img src="images/toolan_3.jpg" alt="Keeping the crowd entertained"><span class="cap">Keeping the crowd entertained</span></div>
@@ -354,7 +354,7 @@ if(form){form.addEventListener('submit',async function(ev){
   try{
     const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)});
     const j=await r.json().catch(function(){return {};});
-    if(r.ok&&j.success){form.reset();s.textContent='Thanks - your message is on its way.';}
+    if(r.ok&&j.success){form.reset();s.style.opacity='1';s.style.fontSize='0.85rem';s.style.fontWeight='700';s.textContent='Thank you for contacting us - we will get back to you asap.';}
     else{s.textContent='Sorry, something went wrong. Please email contact@cgtalent.uk.';}
   }catch(e){s.textContent='Sorry, something went wrong. Please email contact@cgtalent.uk.';}
 });}
