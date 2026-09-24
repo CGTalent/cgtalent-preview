@@ -355,7 +355,7 @@ if(form){form.addEventListener('submit',async function(ev){
   try{
     const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload)});
     const j=await r.json().catch(function(){return {};});
-    if(r.ok&&j.success){form.reset();s.style.opacity='1';s.style.fontSize='0.85rem';s.style.fontWeight='700';s.textContent='Thank you for contacting us - we will get back to you asap.';}
+    if(r.ok&&j.success){form.reset();s.style.opacity='1';s.style.fontSize='1.7rem';s.style.fontWeight='700';s.style.lineHeight='1.35';s.style.letterSpacing='0.02em';s.style.marginTop='20px';s.textContent='\uD83C\uDF89 Thank you for contacting us - we will get back to you asap.';}
     else{s.textContent='Sorry, something went wrong. Please email contact@cgtalent.uk.';}
   }catch(e){s.textContent='Sorry, something went wrong. Please email contact@cgtalent.uk.';}
 });}
