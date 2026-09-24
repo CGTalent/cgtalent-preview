@@ -1,0 +1,21 @@
+<!DOCTYPE html><html><body><pre id="out">running</pre>
+<script>
+var payload = {
+  access_key: "d6c9c70c-4508-4a5f-a254-8b35ee40bdb6",
+  subject: "New enquiry from the CGTalent website",
+  from_name: "CGTalent website",
+  name: "Jerry (automated test)",
+  email: "test-sender@example.com",
+  phone: "07861 36 26 36",
+  type: "booking",
+  message: "Automatic test of the new contact form. If you are reading this in Gmail, the contact form is working.",
+  botcheck: ""
+};
+fetch("https://api.web3forms.com/submit", {
+  method: "POST",
+  headers: { "Content-Type": "application/json", Accept: "application/json" },
+  body: JSON.stringify(payload)
+})
+  .then(function (r) { return r.json().then(function (j) { document.getElementById("out").textContent = "RESULT " + r.status + " " + JSON.stringify(j); }); })
+  .catch(function (e) { document.getElementById("out").textContent = "ERROR " + e; });
+</script></body></html>
